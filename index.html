@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Samudra Rasa - Restoran Seafood Premium dengan sajian laut segar dan rempah otentik nusantara. Nikmati pengalaman kuliner terbaik bersama kami.">
+    <meta property="og:title" content="Samudra Rasa | Restoran Seafood Premium">
+    <meta property="og:description"
+        content="Sajian laut segar tangkapan hari ini dengan bumbu warisan keluarga. Reservasi meja Anda sekarang.">
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1559742811-822873691df8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://samudrarasa.com">
+    <title>Samudra Rasa | Restoran Seafood Premium</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Samudra Rasa",
+      "image": "https://images.unsplash.com/photo-1559742811-822873691df8",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Jl. Pantai Indah Kapuk No. 88",
+        "addressLocality": "Jakarta Utara",
+        "postalCode": "14460",
+        "addressCountry": "ID"
+      },
+      "telephone": "+622155558888",
+      "servesCuisine": "Seafood",
+      "priceRange": "$$$",
+      "openingHours": "Mo-Fr 11:00-22:00, Sa-Su 10:00-23:00"
+    }
+    </script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ocean: {
+                            50: '#f2f8fc',
+                            100: '#e3f0f8',
+                            500: '#2c82c9',
+                            800: '#1a4f7a',
+                            900: '#123654',
+                        },
+                        coral: {
+                            500: '#ff6b6b',
+                            600: '#ee5253',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Poppins"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-sans text-gray-800 antialiased bg-gray-50 overflow-x-hidden">
+
+    <!-- Preloader -->
+    <div id="preloader"
+        class="fixed inset-0 z-[100] bg-ocean-900 flex flex-col items-center justify-center transition-opacity duration-500">
+        <i class="fa-solid fa-anchor text-coral-500 text-6xl animate-pulse mb-4"></i>
+        <h2 class="text-white font-serif text-2xl font-bold tracking-widest uppercase">Samudra Rasa</h2>
+    </div>
+
+    <!-- Skip Navigation for Accessibility -->
+    <a href="#main-content"
+        class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-coral-500 text-white px-4 py-2 rounded z-[110]">
+        Skip to content
+    </a>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent py-4"
+        aria-label="Main Navigation">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <a href="#"
+                        class="font-serif text-2xl font-bold text-white flex items-center gap-2 transition-colors duration-300 focus-visible"
+                        id="nav-logo" aria-label="Samudra Rasa Home">
+                        <i class="fa-solid fa-anchor text-coral-500" aria-hidden="true"></i>
+                        Samudra Rasa
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center" role="menubar">
+                    <a href="#beranda"
+                        class="nav-link text-white hover:text-coral-500 font-medium transition focus-visible"
+                        role="menuitem">Beranda</a>
+                    <a href="#tentang"
+                        class="nav-link text-white hover:text-coral-500 font-medium transition focus-visible"
+                        role="menuitem">Tentang Kami</a>
+                    <a href="#menu"
+                        class="nav-link text-white hover:text-coral-500 font-medium transition focus-visible"
+                        role="menuitem">Menu</a>
+                    <a href="#ulasan"
+                        class="nav-link text-white hover:text-coral-500 font-medium transition focus-visible"
+                        role="menuitem">Ulasan</a>
+                    <a href="#kontak"
+                        class="nav-link text-white hover:text-coral-500 font-medium transition focus-visible"
+                        role="menuitem">Kontak</a>
+                    <a href="#reservasi"
+                        class="bg-coral-500 hover:bg-coral-600 text-white px-6 py-2 rounded-full font-medium transition transform hover:-translate-y-0.5 shadow-lg focus-visible"
+                        role="menuitem">Reservasi</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn"
+                        class="text-white hover:text-coral-500 focus:outline-none focus-visible transition-colors duration-300"
+                        aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle menu">
+                        <i class="fa-solid fa-bars text-2xl" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-xl absolute w-full top-full left-0 transition-all"
+            aria-labelledby="mobile-menu-btn">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#beranda"
+                    class="block px-3 py-2 text-gray-800 hover:bg-ocean-50 hover:text-ocean-800 rounded-md font-medium focus-visible">Beranda</a>
+                <a href="#tentang"
+                    class="block px-3 py-2 text-gray-800 hover:bg-ocean-50 hover:text-ocean-800 rounded-md font-medium focus-visible">Tentang
+                    Kami</a>
+                <a href="#menu"
+                    class="block px-3 py-2 text-gray-800 hover:bg-ocean-50 hover:text-ocean-800 rounded-md font-medium focus-visible">Menu</a>
+                <a href="#ulasan"
+                    class="block px-3 py-2 text-gray-800 hover:bg-ocean-50 hover:text-ocean-800 rounded-md font-medium focus-visible">Ulasan</a>
+                <a href="#kontak"
+                    class="block px-3 py-2 text-gray-800 hover:bg-ocean-50 hover:text-ocean-800 rounded-md font-medium focus-visible">Kontak</a>
+                <a href="#reservasi"
+                    class="block px-3 py-2 mt-4 text-center bg-coral-500 text-white rounded-md font-medium hover:bg-coral-600 focus-visible">Reservasi
+                    Meja</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section id="beranda" class="relative h-screen flex items-center justify-center overflow-hidden">
+            <!-- Background Image -->
+            <div class="absolute inset-0 w-full h-full parallax-bg"
+                style="background-image: url('https://images.unsplash.com/photo-1559742811-822873691df8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
+                <div class="absolute inset-0 hero-overlay"></div>
+            </div>
+
+            <!-- Content -->
+            <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-16 reveal">
+                <span
+                    class="block text-coral-500 font-semibold tracking-widest uppercase mb-4 text-sm md:text-base">Kelezatan
+                    Laut Alami</span>
+                <h1
+                    class="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 leading-tight drop-shadow-lg">
+                    Sajian Laut Segar,<br>Tangkapan Hari Ini.
+                </h1>
+                <p class="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto font-light drop-shadow-md">
+                    Nikmati perpaduan sempurna antara hasil laut segar pilihan dan bumbu rempah otentik nusantara di
+                    suasana yang nyaman.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#menu"
+                        class="bg-coral-500 hover:bg-coral-600 text-white px-8 py-4 rounded-full font-medium transition text-lg shadow-[0_0_20px_rgba(255,107,107,0.4)] hover:shadow-[0_0_25px_rgba(255,107,107,0.6)] focus-visible">
+                        Lihat Menu
+                    </a>
+                    <a href="#reservasi"
+                        class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-ocean-900 px-8 py-4 rounded-full font-medium transition text-lg focus-visible">
+                        Pesan Meja
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Counter Section -->
+        <section id="stats"
+            class="py-12 bg-white relative z-20 -mt-12 mx-4 sm:mx-6 lg:mx-auto max-w-5xl rounded-2xl shadow-xl">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center px-6">
+                <div class="reveal">
+                    <i class="fa-solid fa-users text-3xl text-coral-500 mb-3"></i>
+                    <h3 class="text-3xl font-serif font-bold text-ocean-900"><span class="stat-counter" data-target="50"
+                            data-suffix="k+">0</span></h3>
+                    <p class="text-gray-500 text-sm font-medium">Pelanggan Puas</p>
+                </div>
+                <div class="reveal" style="transition-delay: 100ms;">
+                    <i class="fa-solid fa-fish text-3xl text-coral-500 mb-3"></i>
+                    <h3 class="text-3xl font-serif font-bold text-ocean-900"><span class="stat-counter" data-target="30"
+                            data-suffix="+">0</span></h3>
+                    <p class="text-gray-500 text-sm font-medium">Menu Pilihan</p>
+                </div>
+                <div class="reveal" style="transition-delay: 200ms;">
+                    <i class="fa-solid fa-star text-3xl text-coral-500 mb-3"></i>
+                    <h3 class="text-3xl font-serif font-bold text-ocean-900"><span class="stat-counter"
+                            data-target="4.8" data-suffix="">0</span></h3>
+                    <p class="text-gray-500 text-sm font-medium">Rating Rata-rata</p>
+                </div>
+                <div class="reveal" style="transition-delay: 300ms;">
+                    <i class="fa-solid fa-award text-3xl text-coral-500 mb-3"></i>
+                    <h3 class="text-3xl font-serif font-bold text-ocean-900"><span class="stat-counter" data-target="20"
+                            data-suffix="+">0</span></h3>
+                    <p class="text-gray-500 text-sm font-medium">Tahun Pengalaman</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="tentang" class="py-20 md:py-32 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="relative reveal">
+                        <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="Koki profesional sedang memasak hidangan laut di dapur terbuka" loading="lazy"
+                            class="rounded-2xl shadow-2xl w-full object-cover h-[500px]">
+                        <div
+                            class="absolute -bottom-6 -right-6 bg-ocean-900 text-white p-6 rounded-xl shadow-xl hidden md:block border-b-4 border-coral-500">
+                            <p class="font-serif text-3xl font-bold text-coral-500 mb-1">100%</p>
+                            <p class="text-sm font-medium">Tangkapan Lokal</p>
+                        </div>
+                    </div>
+                    <div class="reveal" style="transition-delay: 200ms;">
+                        <h2 class="text-3xl md:text-5xl font-serif font-bold text-ocean-900 mb-6 leading-tight">Dari
+                            Laut ke<br><span class="text-coral-500">Piring Anda</span></h2>
+                        <p class="text-gray-600 mb-6 leading-relaxed text-lg">
+                            Di <strong>Samudra Rasa</strong>, kami percaya bahwa kualitas hidangan laut bermula dari
+                            kesegarannya. Setiap pagi, kami memilih langsung tangkapan terbaik dari nelayan lokal untuk
+                            memastikan Anda hanya menikmati yang berkualitas.
+                        </p>
+                        <p class="text-gray-600 mb-8 leading-relaxed text-lg">
+                            Dipadukan dengan resep warisan keluarga dan rempah-rempah pilihan, setiap suapan menjanjikan
+                            petualangan rasa yang tak terlupakan.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="flex items-start gap-4">
+                                <div class="bg-white p-3 rounded-xl shadow-md text-coral-500 flex-shrink-0">
+                                    <i class="fa-solid fa-ship text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-ocean-900 text-lg">Nelayan Lokal</h4>
+                                    <p class="text-sm text-gray-500 mt-1">Mendukung ekonomi nelayan pesisir</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="bg-white p-3 rounded-xl shadow-md text-coral-500 flex-shrink-0">
+                                    <i class="fa-solid fa-leaf text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-ocean-900 text-lg">Bahan Alami</h4>
+                                    <p class="text-sm text-gray-500 mt-1">Tanpa pengawet & MSG buatan</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Highlight Section -->
+        <section id="menu" class="py-20 md:py-32 bg-ocean-50 relative">
+            <!-- Decorative element -->
+            <div class="absolute top-0 left-0 w-full overflow-hidden leading-none transform rotate-180">
+                <svg class="relative block w-full h-12 md:h-20" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path
+                        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                        fill="#f9fafb"></path>
+                </svg>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+                <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                    <span class="text-coral-500 font-bold tracking-widest uppercase text-sm">Menu Favorit</span>
+                    <h2 class="text-3xl md:text-5xl font-serif font-bold text-ocean-900 mt-2 mb-4">Hidangan Khas Kami
+                    </h2>
+                    <p class="text-gray-600 text-lg">Pilihan menu terbaik yang selalu menjadi favorit pelanggan setia
+                        Samudra Rasa.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Menu Item 1 -->
+                    <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group reveal"
+                        style="transition-delay: 100ms;">
+                        <div class="h-60 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                                alt="Kepiting Saus Padang pedas manis" loading="lazy"
+                                class="menu-img w-full h-full object-cover transition-transform duration-500">
+                            <div
+                                class="absolute top-4 right-4 bg-white/95 backdrop-blur px-3 py-1 rounded-full text-ocean-900 font-bold text-sm shadow">
+                                Rp 250.000
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-1 text-yellow-400 text-sm mb-2"
+                                aria-label="Rating 5 dari 5 bintang">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <h3 class="font-serif font-bold text-xl text-ocean-900 mb-2">Kepiting Saus Padang</h3>
+                            <p class="text-gray-600 text-sm mb-4 line-clamp-2">Kepiting Tarakan super besar dimasak
+                                dengan bumbu saus Padang pedas manis yang meresap.</p>
+                        </div>
+                    </div>
+
+                    <!-- Menu Item 2 -->
+                    <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group reveal"
+                        style="transition-delay: 200ms;">
+                        <div class="h-60 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1580476262798-bddd9f4b7369?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                                alt="Ikan Bakar Jimbaran khas Bali" loading="lazy"
+                                class="menu-img w-full h-full object-cover transition-transform duration-500">
+                            <div
+                                class="absolute top-4 right-4 bg-white/95 backdrop-blur px-3 py-1 rounded-full text-ocean-900 font-bold text-sm shadow">
+                                Rp 180.000
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-1 text-yellow-400 text-sm mb-2"
+                                aria-label="Rating 4.5 dari 5 bintang">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <h3 class="font-serif font-bold text-xl text-ocean-900 mb-2">Ikan Bakar Jimbaran</h3>
+                            <p class="text-gray-600 text-sm mb-4 line-clamp-2">Ikan Kerapu bakar khas Bali dengan olesan
+                                bumbu rempah spesial dan sambal matah.</p>
+                        </div>
+                    </div>
+
+                    <!-- Menu Item 3 -->
+                    <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group reveal"
+                        style="transition-delay: 300ms;">
+                        <div class="h-60 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1723325703575-21d065b62957?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                alt="Udang Bakar Madu segar" loading="lazy"
+                                class="menu-img w-full h-full object-cover transition-transform duration-500">
+                            <div
+                                class="absolute top-4 right-4 bg-white/95 backdrop-blur px-3 py-1 rounded-full text-ocean-900 font-bold text-sm shadow">
+                                Rp 150.000
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-1 text-yellow-400 text-sm mb-2"
+                                aria-label="Rating 4 dari 5 bintang">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                            <h3 class="font-serif font-bold text-xl text-ocean-900 mb-2">Udang Bakar Madu</h3>
+                            <p class="text-gray-600 text-sm mb-4 line-clamp-2">Udang pancet segar dibakar sempurna
+                                dengan olesan madu murni dan bumbu gurih.</p>
+                        </div>
+                    </div>
+
+                    <!-- Menu Item 4 -->
+                    <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group reveal"
+                        style="transition-delay: 400ms;">
+                        <div class="h-60 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1669385184491-8ab70b39324e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                alt="Cumi Goreng Tepung renyah" loading="lazy"
+                                class="menu-img w-full h-full object-cover transition-transform duration-500">
+                            <div
+                                class="absolute top-4 right-4 bg-white/95 backdrop-blur px-3 py-1 rounded-full text-ocean-900 font-bold text-sm shadow">
+                                Rp 95.000
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-1 text-yellow-400 text-sm mb-2"
+                                aria-label="Rating 5 dari 5 bintang">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <h3 class="font-serif font-bold text-xl text-ocean-900 mb-2">Cumi Calamari</h3>
+                            <p class="text-gray-600 text-sm mb-4 line-clamp-2">Potongan cumi segar yang digoreng renyah
+                                dengan tepung bumbu rahasia, disajikan dengan saus tartar.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-16 reveal">
+                    <button
+                        class="bg-transparent border-2 border-ocean-900 text-ocean-900 hover:bg-ocean-900 hover:text-white px-8 py-3 rounded-full font-bold transition duration-300 inline-flex items-center gap-2 focus-visible">
+                        Lihat Menu Lengkap <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Decorative element bottom -->
+            <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+                <svg class="relative block w-full h-12 md:h-20" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path
+                        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                        fill="#ffffff"></path>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="ulasan" class="py-20 md:py-32 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                    <span class="text-coral-500 font-bold tracking-widest uppercase text-sm">Kata Mereka</span>
+                    <h2 class="text-3xl md:text-5xl font-serif font-bold text-ocean-900 mt-2 mb-4">Ulasan Pelanggan</h2>
+                    <p class="text-gray-600 text-lg">Kebahagiaan pelanggan adalah pencapaian terbesar bagi kami.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Review 1 -->
+                    <div class="bg-ocean-50 p-8 rounded-2xl shadow-sm hover:shadow-md transition reveal"
+                        style="transition-delay: 100ms;">
+                        <div class="flex items-center gap-1 text-yellow-400 text-sm mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 mb-6 italic leading-relaxed">"Kepiting Saus Padangnya luar biasa!
+                            Dagingnya tebal dan manis, bumbunya pas tidak terlalu pedas. Tempatnya juga sangat bersih
+                            dan nyaman untuk keluarga."</p>
+                        <div class="flex items-center gap-4 mt-auto">
+                            <div
+                                class="w-12 h-12 bg-ocean-200 rounded-full flex items-center justify-center text-ocean-900 font-bold text-xl">
+                                A</div>
+                            <div>
+                                <h4 class="font-bold text-ocean-900">Ardiansyah</h4>
+                                <p class="text-sm text-gray-500">Local Guide</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div class="bg-ocean-50 p-8 rounded-2xl shadow-sm hover:shadow-md transition reveal"
+                        style="transition-delay: 200ms;">
+                        <div class="flex items-center gap-1 text-yellow-400 text-sm mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 mb-6 italic leading-relaxed">"Sering bawa klien meeting sambil makan
+                            malam di sini. Suasananya premium, pelayanannya sangat tanggap. Favorit saya Ikan Bakar
+                            Jimbarannya, otentik rasanya."</p>
+                        <div class="flex items-center gap-4 mt-auto">
+                            <div
+                                class="w-12 h-12 bg-ocean-200 rounded-full flex items-center justify-center text-ocean-900 font-bold text-xl">
+                                D</div>
+                            <div>
+                                <h4 class="font-bold text-ocean-900">Diana Putri</h4>
+                                <p class="text-sm text-gray-500">Corporate Manager</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 3 -->
+                    <div class="bg-ocean-50 p-8 rounded-2xl shadow-sm hover:shadow-md transition reveal"
+                        style="transition-delay: 300ms;">
+                        <div class="flex items-center gap-1 text-yellow-400 text-sm mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <p class="text-gray-700 mb-6 italic leading-relaxed">"Seafood paling segar di kawasan ini. Udang
+                            bakar madunya jadi favorit anak-anak. Pastikan reservasi dulu kalau weekend karena selalu
+                            penuh."</p>
+                        <div class="flex items-center gap-4 mt-auto">
+                            <div
+                                class="w-12 h-12 bg-ocean-200 rounded-full flex items-center justify-center text-ocean-900 font-bold text-xl">
+                                B</div>
+                            <div>
+                                <h4 class="font-bold text-ocean-900">Budi Santoso</h4>
+                                <p class="text-sm text-gray-500">Food Enthusiast</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="py-2 bg-white overflow-hidden">
+            <div class="flex gap-4 overflow-x-auto hide-scrollbar pb-8 px-4 snap-x">
+                <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?ixlib=rb-4.0.3&w=400&q=80"
+                    alt="Suasana dalam restoran" loading="lazy"
+                    class="w-72 h-48 object-cover rounded-xl snap-center flex-shrink-0 hover:opacity-90 transition cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?ixlib=rb-4.0.3&w=400&q=80"
+                    alt="Hidangan sushi dan sashimi" loading="lazy"
+                    class="w-72 h-48 object-cover rounded-xl snap-center flex-shrink-0 hover:opacity-90 transition cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1574484284002-952d92456975?ixlib=rb-4.0.3&w=400&q=80"
+                    alt="Koki menyiapkan makanan" loading="lazy"
+                    class="w-72 h-48 object-cover rounded-xl snap-center flex-shrink-0 hover:opacity-90 transition cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1600803907087-f56d462fd26b?ixlib=rb-4.0.3&w=400&q=80"
+                    alt="Pemandangan malam restoran" loading="lazy"
+                    class="w-72 h-48 object-cover rounded-xl snap-center flex-shrink-0 hover:opacity-90 transition cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&w=400&q=80"
+                    alt="Detail hidangan" loading="lazy"
+                    class="w-72 h-48 object-cover rounded-xl snap-center flex-shrink-0 hover:opacity-90 transition cursor-pointer">
+            </div>
+        </section>
+
+        <!-- Reservation Section -->
+        <section id="reservasi" class="py-20 md:py-32 bg-gray-50 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-ocean-900 rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row reveal">
+                    <!-- Image Side -->
+                    <div class="lg:w-2/5 relative h-64 lg:h-auto">
+                        <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Interior restoran yang mewah" loading="lazy" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-ocean-900/40"></div>
+                        <div class="absolute inset-0 flex flex-col justify-center px-8">
+                            <h3 class="text-white font-serif text-3xl font-bold mb-4">Pengalaman Bersantap Eksklusif
+                            </h3>
+                            <p class="text-ocean-100 italic">"Suasana yang hangat berpadu dengan hidangan premium."</p>
+                        </div>
+                    </div>
+
+                    <!-- Form Side -->
+                    <div class="lg:w-3/5 p-8 md:p-12 lg:p-16 text-white bg-ocean-900">
+                        <h2 class="text-3xl md:text-4xl font-serif font-bold mb-2">Reservasi Meja</h2>
+                        <p class="text-ocean-100 mb-8">Pastikan Anda mendapatkan tempat terbaik. Pesan sekarang untuk
+                            makan malam yang tak terlupakan.</p>
+
+                        <form id="reservation-form" class="space-y-6" novalidate>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="res-name" class="block text-sm font-medium text-ocean-100 mb-2">Nama
+                                        Lengkap <span class="text-coral-500">*</span></label>
+                                    <input type="text" id="res-name" name="name" required aria-required="true"
+                                        class="w-full bg-ocean-800 border border-ocean-700 rounded-lg px-4 py-3 text-white placeholder-ocean-300 focus:outline-none focus:border-coral-500 focus:ring-1 focus:ring-coral-500 transition"
+                                        placeholder="Contoh: Budi Santoso">
+                                </div>
+                                <div>
+                                    <label for="res-phone" class="block text-sm font-medium text-ocean-100 mb-2">Nomor
+                                        Telepon / WhatsApp <span class="text-coral-500">*</span></label>
+                                    <input type="tel" id="res-phone" name="phone" required aria-required="true"
+                                        pattern="[0-9]{10,14}"
+                                        class="w-full bg-ocean-800 border border-ocean-700 rounded-lg px-4 py-3 text-white placeholder-ocean-300 focus:outline-none focus:border-coral-500 focus:ring-1 focus:ring-coral-500 transition"
+                                        placeholder="Contoh: 08123456789">
+                                </div>
+                                <div>
+                                    <label for="res-date" class="block text-sm font-medium text-ocean-100 mb-2">Tanggal
+                                        <span class="text-coral-500">*</span></label>
+                                    <input type="date" id="res-date" name="date" required aria-required="true"
+                                        class="w-full bg-ocean-800 border border-ocean-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-coral-500 focus:ring-1 focus:ring-coral-500 transition color-scheme-dark">
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="res-time"
+                                            class="block text-sm font-medium text-ocean-100 mb-2">Waktu <span
+                                                class="text-coral-500">*</span></label>
+                                        <select id="res-time" name="time" required aria-required="true"
+                                            class="w-full bg-ocean-800 border border-ocean-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-coral-500 focus:ring-1 focus:ring-coral-500 transition cursor-pointer appearance-none">
+                                            <option value="" disabled selected>Pilih</option>
+                                            <option value="11:00">11:00</option>
+                                            <option value="12:00">12:00</option>
+                                            <option value="13:00">13:00</option>
+                                            <option value="17:00">17:00</option>
+                                            <option value="18:00">18:00</option>
+                                            <option value="19:00">19:00</option>
+                                            <option value="20:00">20:00</option>
+                                            <option value="21:00">21:00</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="res-guests"
+                                            class="block text-sm font-medium text-ocean-100 mb-2">Orang <span
+                                                class="text-coral-500">*</span></label>
+                                        <select id="res-guests" name="guests" required aria-required="true"
+                                            class="w-full bg-ocean-800 border border-ocean-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-coral-500 focus:ring-1 focus:ring-coral-500 transition cursor-pointer appearance-none">
+                                            <option value="" disabled selected>Pilih</option>
+                                            <option value="2">2 Orang</option>
+                                            <option value="3">3 Orang</option>
+                                            <option value="4">4 Orang</option>
+                                            <option value="5-8">5-8 Orang</option>
+                                            <option value=">8">> 8 Orang (VIP)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit"
+                                class="w-full bg-coral-500 hover:bg-coral-600 text-white font-bold py-4 rounded-lg mt-6 transition duration-300 shadow-lg focus-visible">
+                                Konfirmasi Reservasi
+                            </button>
+                        </form>
+
+                        <!-- Success Message -->
+                        <div id="success-msg"
+                            class="hidden mt-6 bg-green-500/20 border border-green-500 text-white px-4 py-4 rounded-lg text-center transition-all duration-300"
+                            role="alert" aria-live="assertive">
+                            <i class="fa-solid fa-circle-check mr-2 text-green-400"></i> Reservasi berhasil! Kami akan
+                            menghubungi WhatsApp Anda untuk konfirmasi akhir.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="kontak" class="bg-ocean-900 text-ocean-100 pt-20 pb-10 border-t-4 border-coral-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- Brand -->
+                <div>
+                    <a href="#"
+                        class="font-serif text-3xl font-bold text-white flex items-center gap-2 mb-6 focus-visible">
+                        <i class="fa-solid fa-anchor text-coral-500" aria-hidden="true"></i>
+                        Samudra Rasa
+                    </a>
+                    <p class="text-ocean-200 mb-6 leading-relaxed">
+                        Menyajikan hidangan laut segar dengan cita rasa nusantara terbaik sejak 2004. Kepuasan Anda
+                        adalah prioritas kami.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" aria-label="Facebook Samudra Rasa"
+                            class="w-10 h-10 rounded-full bg-ocean-800 flex items-center justify-center hover:bg-coral-500 hover:text-white transition duration-300 focus-visible"><i
+                                class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Instagram Samudra Rasa"
+                            class="w-10 h-10 rounded-full bg-ocean-800 flex items-center justify-center hover:bg-coral-500 hover:text-white transition duration-300 focus-visible"><i
+                                class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="TikTok Samudra Rasa"
+                            class="w-10 h-10 rounded-full bg-ocean-800 flex items-center justify-center hover:bg-coral-500 hover:text-white transition duration-300 focus-visible"><i
+                                class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-6 uppercase tracking-wider text-sm">Tautan Cepat</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#beranda" class="hover:text-coral-500 transition focus-visible">Beranda</a></li>
+                        <li><a href="#tentang" class="hover:text-coral-500 transition focus-visible">Tentang Kami</a>
+                        </li>
+                        <li><a href="#menu" class="hover:text-coral-500 transition focus-visible">Daftar Menu</a></li>
+                        <li><a href="#ulasan" class="hover:text-coral-500 transition focus-visible">Ulasan Pelanggan</a>
+                        </li>
+                        <li><a href="#reservasi" class="hover:text-coral-500 transition focus-visible">Reservasi</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-6 uppercase tracking-wider text-sm">Hubungi Kami</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot mt-1.5 text-coral-500 w-5 text-center"
+                                aria-hidden="true"></i>
+                            <span>Jl. Pantai Indah Kapuk No. 88,<br>Jakarta Utara, 14460</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-coral-500 w-5 text-center" aria-hidden="true"></i>
+                            <a href="tel:+622155558888" class="hover:text-coral-500 transition focus-visible">+62 21
+                                5555 8888</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-brands fa-whatsapp text-coral-500 w-5 text-center" aria-hidden="true"></i>
+                            <a href="https://wa.me/6281234567890" target="_blank" rel="noopener"
+                                class="hover:text-coral-500 transition focus-visible">+62 812 3456 7890</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-coral-500 w-5 text-center" aria-hidden="true"></i>
+                            <a href="mailto:halo@samudrarasa.com"
+                                class="hover:text-coral-500 transition focus-visible">halo@samudrarasa.com</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Hours -->
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-6 uppercase tracking-wider text-sm">Jam Operasional</h3>
+                    <ul class="space-y-4">
+                        <li class="flex justify-between border-b border-ocean-800 pb-2">
+                            <span>Senin - Jumat</span>
+                            <span class="font-medium">11:00 - 22:00</span>
+                        </li>
+                        <li class="flex justify-between border-b border-ocean-800 pb-2">
+                            <span>Sabtu - Minggu</span>
+                            <span class="font-medium">10:00 - 23:00</span>
+                        </li>
+                        <li class="flex justify-between border-b border-ocean-800 pb-2 text-coral-500 font-medium">
+                            <span>Hari Libur Nasional</span>
+                            <span>Tetap Buka</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-ocean-800 pt-8 flex flex-col md:flex-row justify-between items-center text-ocean-400 text-sm gap-4">
+                <p>&copy; 2026 Samudra Rasa Seafood Restaurant. Hak Cipta Dilindungi.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-white transition focus-visible">Kebijakan Privasi</a>
+                    <a href="#" class="hover:text-white transition focus-visible">Syarat & Ketentuan</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer"
+        class="fixed bottom-6 right-6 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-[0_4px_14px_0_rgba(37,211,102,0.39)] hover:bg-[#128C7E] hover:shadow-[0_6px_20px_rgba(37,211,102,0.23)] transition-all duration-300 hover:-translate-y-1 z-50 animate-bounce-slow focus-visible"
+        aria-label="Chat dengan kami via WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
